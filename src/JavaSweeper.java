@@ -1,3 +1,5 @@
+import sweeper.Box;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,6 +14,7 @@ public class JavaSweeper extends JFrame {
     }
 
     private JavaSweeper(){
+        setImages();
         initPanel();
         initFrame();
     }
@@ -21,10 +24,9 @@ public class JavaSweeper extends JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(getImage("bomb"), 0, 0, this);
-                g.drawImage(getImage("num1"), IMAGE_SIZE, 0, this);
-                g.drawImage(getImage("num1"), IMAGE_SIZE, IMAGE_SIZE, this);
-                g.drawImage(getImage("num1"), 0, IMAGE_SIZE, this);
+                for(Box box : Box.values()) {
+                    g.drawImage((Image) box.image, box.ordinal() * IMAGE_SIZE, 0, this);
+                }
             }
         };
         panel.setPreferredSize(new Dimension(COLS * IMAGE_SIZE, ROWS * IMAGE_SIZE));
@@ -40,8 +42,15 @@ public class JavaSweeper extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    private Image getImage(String name){
-        ImageIcon icon = new ImageIcon("res/img/" + name + ".png");
+    private void setImages() {
+        for(Box box : Box.values()){
+            box.image = getImage(box.name().toLowerCase());
+        }
+    }
+
+    private Image getImage(String name) {
+        String filename = "img/" + name + ".png";
+        ImageIcon icon = new ImageIcon(getClass().getResource(filename));
         return icon.getImage();
     }
 

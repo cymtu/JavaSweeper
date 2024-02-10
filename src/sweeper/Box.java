@@ -16,4 +16,6 @@ public enum Box {
     FLAGED,
     BOMBED,
     NOBOMB;
+
+    public Object image;
 }
