@@ -21,11 +21,6 @@ public class Ranges {
         }
     }
 
-    public static void setSize(int cols, int rows){
-        Coord size = new Coord(cols, rows);
-        setSize(size);
-    }
-
     public static ArrayList<Coord> getAllCoords(){
         return allCoords;
     }
