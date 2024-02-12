@@ -8,10 +8,11 @@ public class Game {
     }
 
     public Box getBox(Coord coord){
-        return bombMap.matrix[coord.x][coord.y];
+        return bombMap.get(coord);
     }
 
     public void start(){
         bombMap = new Matrix(Box.ZERO);
+        bombMap.set(new Coord(0,0), Box.BOMB);
     }
 }
