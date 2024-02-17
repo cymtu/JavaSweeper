@@ -93,10 +93,15 @@ public class JavaSweeper extends JFrame {
 
     private String getMessage(){
         switch (game.getState()){
-            case PLAYED: return "Welcome!";
             case BOMBED: return "Ba-Da-Boom! You Lose!";
             case WINNER: return "Congratulations! All bombs have been marked!";
-            default: return "";
+            case PLAYED:
+            default: if(game.getTotalFlaged() == 0)
+                         return "Welcome!";
+                     else
+                         return "Think twice! Flagged " +
+                                 game.getTotalFlaged() + " of " +
+                                 game.getTotalBombs() + " bombs.";
         }
     }
 }

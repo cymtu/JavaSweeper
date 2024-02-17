@@ -55,4 +55,12 @@ public class Game {
     public void pressRightButton(Coord coord){
         flag.toggleFlagedToBox(coord);
     }
+
+    public int getTotalBombs(){
+        return bomb.getTotalBombs();
+    }
+
+    public int getTotalFlaged(){
+        return flag.getTotalFlaged();
+    }
 }
