@@ -32,7 +32,7 @@ public class JavaSweeper extends JFrame {
 
     private void initLabel() {
         label = new JLabel(getMessage());
-        Font font = new Font("Tahoma", Font.BOLD, 20);
+        Font font = new Font("Tahoma", Font.BOLD, 18);
         label.setFont(font);
         add(label, BorderLayout.SOUTH);
     }
