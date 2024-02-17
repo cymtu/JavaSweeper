@@ -16,6 +16,7 @@ public class JavaSweeper extends JFrame {
     private final int BOMBS = 10;
     private final int IMAGE_SIZE = 50;
     private JPanel panel;
+    private JLabel label;
     public static void main(String[] args) {
         new JavaSweeper();
     }
@@ -25,7 +26,15 @@ public class JavaSweeper extends JFrame {
         game.start();
         setImages();
         initPanel();
+        initLabel();
         initFrame();
+    }
+
+    private void initLabel() {
+        label = new JLabel("Welcome!");
+        Font font = new Font("Tahoma", Font.BOLD, 20);
+        label.setFont(font);
+        add(label, BorderLayout.SOUTH);
     }
 
     private void initPanel() {
