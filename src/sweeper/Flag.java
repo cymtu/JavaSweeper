@@ -51,4 +51,8 @@ public class Flag {
             if(Box.CLOSED == flagMap.get(coord))
                 setFlagedToBox(coord);
     }
+
+    public void setBombedToBox(Coord bombedCoord) {
+        flagMap.set(bombedCoord, Box.BOMBED);
+    }
 }
