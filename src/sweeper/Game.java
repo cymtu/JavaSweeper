@@ -4,6 +4,8 @@ public class Game {
 
     private Bomb bomb;
     private Flag flag;
+    private GameState state;
+
     public Game(int cols, int rows, int bombs) {
         Ranges.setSize(new Coord(cols, rows));
         bomb = new Bomb(bombs);
@@ -16,9 +18,15 @@ public class Game {
         else
             return flag.get(coord);
     }
+
+    public GameState getState() {
+        return state;
+    }
+
     public void start(){
         bomb.start();
         flag.start();
+        state = GameState.PLAYED;
     }
 
     public void pressLeftButton(Coord coord){
