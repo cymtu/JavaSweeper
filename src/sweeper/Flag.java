@@ -45,4 +45,10 @@ public class Flag {
     int getTotalClosed() {
         return totalClosed;
     }
+
+    public void setFlagedToLastClosedBoxes() {
+        for(Coord coord : Ranges.getAllCoords())
+            if(Box.CLOSED == flagMap.get(coord))
+                setFlagedToBox(coord);
+    }
 }
