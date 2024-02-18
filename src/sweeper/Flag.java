@@ -46,23 +46,31 @@ public class Flag {
         return totalClosed;
     }
 
-    public void setFlagedToLastClosedBoxes() {
+    void setFlagedToLastClosedBoxes() {
         for(Coord coord : Ranges.getAllCoords())
             if(Box.CLOSED == flagMap.get(coord))
                 setFlagedToBox(coord);
     }
 
-    public void setBombedToBox(Coord bombedCoord) {
+    void setBombedToBox(Coord bombedCoord) {
         flagMap.set(bombedCoord, Box.BOMBED);
     }
 
-    public void setOpenedToClosedBox(Coord coord) {
+    void setOpenedToClosedBox(Coord coord) {
         if(Box.CLOSED == flagMap.get(coord))
             flagMap.set(coord, Box.OPENED);
     }
 
-    public void setNobombToFlagedBox(Coord coord) {
+    void setNobombToFlagedBox(Coord coord) {
         if(Box.FLAGED == flagMap.get(coord))
             flagMap.set(coord, Box.NOBOMB);
+    }
+
+    int getCountOfFlagedBoxesAround(Coord coord) {
+        int count = 0;
+        for(Coord around : Ranges.getCoordsAround(coord))
+            if(flagMap.get(around) == Box.FLAGED)
+                count++;
+        return count;
     }
 }
