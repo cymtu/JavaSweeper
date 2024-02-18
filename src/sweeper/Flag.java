@@ -55,4 +55,14 @@ public class Flag {
     public void setBombedToBox(Coord bombedCoord) {
         flagMap.set(bombedCoord, Box.BOMBED);
     }
+
+    public void setOpenedToClosedBox(Coord coord) {
+        if(Box.CLOSED == flagMap.get(coord))
+            flagMap.set(coord, Box.OPENED);
+    }
+
+    public void setNobombToFlagedBox(Coord coord) {
+        if(Box.FLAGED == flagMap.get(coord))
+            flagMap.set(coord, Box.NOBOMB);
+    }
 }
